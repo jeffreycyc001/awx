@@ -1,0 +1,14 @@
+---
+- name: install nginx only on Ubuntu
+  hosts: all
+  gather_facts: yes
+  vars:
+    supported_distros:
+      - Ubuntu
+  tasks:
+    - name: install nginx using apt
+      apt:
+        name: nginx
+        state: present
+      when: ansible_distribution in supported_distros
+

@@ -1,0 +1,21 @@
+---
+- name: copy copy copy
+  hosts: all
+  tasks:
+  - name: copy a file
+    copy:
+      src: /tmp/{{ playground_file }}
+      dest: "{{ playground_path }}/{{ playground_file }}"
+  - name: add a single line of text to a file
+    lineinfile:
+      path: "{{ playground_path }}/{{ playground_file }}"
+      line: "Thu Feb 9 09:40:01 AM CST 2023"
+      state: present
+  - name: add a block of text to a file
+    blockinfile:
+      path: "{{ playground_path }}/{{ playground_file }}.block"
+      block: |
+        This block of text consists of two lines.
+        They have been added by the blockinfile module.
+      state: present
+      create: true

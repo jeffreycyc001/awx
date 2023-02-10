@@ -1,0 +1,8 @@
+- name: get os release
+  hosts: localhost
+  gather_facts: true
+  tasks:
+    - name: print os release
+      debug:
+        msg: "{{ ansible_distribution }}"
+          #var: ansible_facts

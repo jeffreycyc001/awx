@@ -1,0 +1,11 @@
+- name: check google gomepage
+  hosts: all
+  tasks:
+  - name: check webpage status of google homepage
+    uri:
+      url: https://www.google.com
+      return_content: no
+    register: url_response
+  - name: show response content
+    debug:
+      var: url_response

@@ -1,0 +1,12 @@
+- name: using dynamic groups
+  hosts: all
+  tasks:
+    - name: Generate dynamic groups based on architecture
+      group_by:
+        key: "arch_{{ ansible_facts['distribution'] }}"
+- name: Configure ubuntu systems
+  hosts: arch_Ubuntu
+  tasks:
+    - name: First task for ubuntu configuration
+      debug:
+        var: ansible_facts.hostname

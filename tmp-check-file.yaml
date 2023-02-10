@@ -1,0 +1,11 @@
+---
+- name: Examine all stat output of {{ tracked_file }}
+  hosts: all
+  tasks:
+  - name: stat {{ tracked_file }}
+    stat:
+      path: "{{ tracked_file }}"
+    register: results
+  - name: Display stat results
+    debug:
+      var: results.stat.checksum
